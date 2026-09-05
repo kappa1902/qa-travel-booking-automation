@@ -32,22 +32,28 @@
 > ```powershell
 > docker-compose up -d
 > ```
->
-> ### 3. Запуск тестируемого приложения (SUT) 
+> 
+> ### 3. Запуск симулятора банковских карт (Gate Simulator)
+> В отдельном окне терминала перейдите в папку симулятора и запустите его:
+> ```powerShell
+> cd gate-simulator
+> npm start
+> ```
+> ### 4. Запуск тестируемого приложения (SUT) 
 > Запустите `aqa-shop.jar` с указанием URL подключения к MySQL:
 >
 > ```powershell
-> java -Dspring.datasource.url=jdbc:mysql://localhost:3307/app -jar aqa-shop.jar
+> java "-Dspring.datasource.url=jdbc:mysql://localhost:3307/app" "-Dspring.datasource.username=root" "-Dspring.datasource.password=pass" -jar aqa-shop.jar
 > ```
 >
-> ### 4. Запуск автотестов 
+> ### 5. Запуск автотестов 
 > Запустите тестовый набор с сохранением результатов для Allure:
 >
 > ```powershell
 > pytest tests/ --alluredir=allure-results
 > ```
 >
-> ### 5. Генерация и просмотр отчетов Allure
+> ### 6. Генерация и просмотр отчетов Allure
 >
 > Для просмотра отчета через локальный веб-сервер:
 >
